@@ -73,6 +73,22 @@ body {
 }
 .split-1-right {
   width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.split-1-image {
+  border: 1px solid #000;
+  background-color: #FFF;
+  text-align: center;
+}
+.split-1-image img {
+  width: 100%;
+  font-size: 14px;
+}
+.split-1-image.small {
+  width: 80%;
+  font-size: 12px;
 }
 .split-2 {
   height: 50px;
