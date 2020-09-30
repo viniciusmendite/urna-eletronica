@@ -7,11 +7,14 @@ let numbers = document.querySelector('.split-1-3');
 
 let currentStep = 0;
 let numberCandidate = '';
+let voteWhiteStatus = false;
 
 function startStep() {
   let step = etapas[currentStep];
 
   let numberHtml = '';
+  numberCandidate = '';
+  voteWhiteStatus = false;
 
   for(let i = 0; i < step.numeros; i++) {
     if (i === 0) {
@@ -53,10 +56,14 @@ function updateInterface() {
       <div class="split-1-image">
         <img src="images/${candidate.fotos[i].url}" alt="candidato">
         ${candidate.fotos[i].legenda}
-      </div>`
+      </div>`;
     }
 
     sideview.innerHTML = photosHtml;
+  } else {
+    yourVoteFor.style.display = 'block';
+    warning.style.display = 'block';
+    description.innerHTML = '<div class="warning-large focus">VOTO NULO</div>';
   }
 }
 
@@ -76,11 +83,19 @@ function clickNumberButton(n) {
 }
 
 function voteWhite() {
-  alert('branco')
+  if (numberCandidate === '') {
+    voteWhiteStatus = true;
+    yourVoteFor.style.display = 'block';
+    warning.style.display = 'block';
+    numbers.innerHTML = '';
+    description.innerHTML = '<div class="warning-large focus">VOTO EM BRANCO</div>';
+  } else {
+    alert('Para votar em BRANCO, não pode ter digitado nenhum número!')
+  }
 }
 
 function voteCorrects() {
-  alert('corrige')
+  startStep();
 }
 
 function voteConfirm() {
