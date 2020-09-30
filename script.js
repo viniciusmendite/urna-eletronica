@@ -52,11 +52,19 @@ function updateInterface() {
 
     let photosHtml = '';
     for (i in candidate.fotos) {
-      photosHtml += `          
-      <div class="split-1-image">
-        <img src="images/${candidate.fotos[i].url}" alt="candidato">
-        ${candidate.fotos[i].legenda}
-      </div>`;
+      if (candidate.fotos[i].small) {
+        photosHtml += `          
+        <div class="split-1-image small">
+          <img src="images/${candidate.fotos[i].url}" alt="candidato">
+          ${candidate.fotos[i].legenda}
+        </div>`;
+      } else {
+        photosHtml += `          
+        <div class="split-1-image">
+          <img src="images/${candidate.fotos[i].url}" alt="candidato">
+          ${candidate.fotos[i].legenda}
+        </div>`;
+      }
     }
 
     sideview.innerHTML = photosHtml;
@@ -99,7 +107,25 @@ function voteCorrects() {
 }
 
 function voteConfirm() {
-  alert('confirma')
+  let step = etapas[currentStep];
+  let voteConfirmStatus = false;
+
+  if (voteWhiteStatus) {
+    voteConfirmStatus = true;
+    console.log('confirmando como branco')
+  } else if (numberCandidate.length === step.numeros) {
+    voteConfirmStatus = true;
+    console.log('confirmando como ' + numberCandidate)
+  }
+
+  if (voteConfirmStatus) {
+    currentStep++;
+    if (etapas[currentStep] !== undefined) {
+      startStep();
+    } else {
+      document.querySelector('.screen').innerHTML = '<div class="warning-big focus">FIM</div>'
+    }
+  }
 }
 
 startStep();

@@ -142,3 +142,11 @@ body {
   font-weight: bold;
   margin-top: 10px;
 }
+.warning-big {
+  font-size: 70px;
+  font-weight: bold;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
