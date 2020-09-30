@@ -112,10 +112,8 @@ function voteConfirm() {
 
   if (voteWhiteStatus) {
     voteConfirmStatus = true;
-    console.log('confirmando como branco')
   } else if (numberCandidate.length === step.numeros) {
     voteConfirmStatus = true;
-    console.log('confirmando como ' + numberCandidate)
   }
 
   if (voteConfirmStatus) {
