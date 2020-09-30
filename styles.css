@@ -15,11 +15,13 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #aeaeae;
 }
 .urn {
   background-color: #DBD5C9;
   padding: 30px;
   display: flex;
+  box-shadow: 0 0 6px #333;
 }
 .screen {
   width: 500px;
